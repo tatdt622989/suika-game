@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon"
+    type="image/svg+xml"
+    href="/vite.svg" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+</head>
+
+<body>
+  <div id="app">
+    <p id="score">SCORE: <span class="num">0</span></p>
+    <div id="scene"></div>
+  </div>
+  <div class="modal fade"
+    id="gameOverModal"
+    tabindex="-1"
+    aria-labelledby="gameOverModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5"
+            id="gameOverModalLabel">Game over</h1>
+          <button type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Score: <span id="gameOverScore"></span></p>
+          <p>High score: <span id="gameOverHighScore"></span></p>
+          <div class="img-box" id="screenshotWrap">
+            <img src=""
+              alt="Screenshot"
+              id="screenshot" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal">Close</button>
+          <button type="button"
+            class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module"
+    src="/main.js"></script>
+</body>
+
+</html>
