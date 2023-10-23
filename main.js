@@ -2,9 +2,26 @@
 import './style.scss';
 import Matter from 'matter-js';
 import { Modal } from 'bootstrap';
-import getCanvasBase64 from './src/utilities/getCanvasBase64';
+import getCanvasBase64 from './assets/utilities/getCanvasBase64';
+import t1 from './assets/images/t1.png';
+import t2 from './assets/images/t2.png';
+import t3 from './assets/images/t3.png';
+import t4 from './assets/images/t4.png';
+import t5 from './assets/images/t5.png';
+import t6 from './assets/images/t6.png';
+import t7 from './assets/images/t7.png';
+import t8 from './assets/images/t8.png';
+import t9 from './assets/images/t9.png';
+import t10 from './assets/images/t10.png';
 
 const scene = document.querySelector('#scene');
+const imgUrl = [t1, t2, t3, t4, t5, t6, t7, t8, t9, t10];
+
+// preload images
+imgUrl.forEach((url) => {
+  const img = new Image();
+  img.src = url;
+});
 
 const {
   Engine, Render, Composite, Bodies, Body, Runner, Events,
@@ -107,7 +124,7 @@ const createBall = (level, isStatic = true, x = 0, y = null, canCollision = true
     level,
     render: {
       sprite: {
-        texture: `./src/images/t${level + 1}.png`,
+        texture: imgUrl[level],
         xScale: scale,
         yScale: scale,
       },
