@@ -13,18 +13,19 @@
 
 <body>
   <div id="app">
-    <p id="score">SCORE: <span class="num">0</span></p>
+    <div class="score-box flex-column">
+      <p id="score" class="d-flex flex-column"><span>SCORE:</span> <span class="num">0</span></p>
+      <p id="highScore" class="d-flex flex-column"><span>HIGH SCORE:</span> <span class="num">0</span></p>
+    </div>
     <div id="scene"></div>
   </div>
   <div class="modal fade"
     id="gameOverModal"
-    tabindex="-1"
-    aria-labelledby="gameOverModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
+    data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="gameOverLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5"
+          <h1 class="modal-title fs-3 m-0"
             id="gameOverModalLabel">Game over</h1>
           <button type="button"
             class="btn-close"
@@ -32,8 +33,7 @@
             aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p>Score: <span id="gameOverScore"></span></p>
-          <p>High score: <span id="gameOverHighScore"></span></p>
+          <p class="fs-3 fw-bold m-0">Score: <span id="gameOverScore"></span></p>
           <div class="img-box" id="screenshotWrap">
             <img src=""
               alt="Screenshot"
@@ -41,11 +41,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal">Close</button>
-          <button type="button"
-            class="btn btn-primary">Save changes</button>
+          <button type="button" id="restart"
+            class="btn btn-primary">Reset</button>
         </div>
       </div>
     </div>

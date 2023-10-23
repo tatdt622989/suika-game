@@ -1,6 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Pixelify+Sans:wght@500&family=Space+Mono:wght@700&display=swap');
+@import "bootstrap/scss/functions";
+$primary: #4a5d56;
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
 
-@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Pixelify+Sans:wght@500&display=swap');
-@import "bootstrap/scss/bootstrap";
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/close";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/modal";
+
+@import "bootstrap/scss/utilities/api";
+
 
 * {
   box-sizing: border-box;
@@ -12,60 +26,81 @@ body {
   margin: 0;
   display: flex;
   align-items: stretch;
+  background: #90a69d;
 }
 
 #app {
-  background: #90a69d;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-    font-family: 'Pixelify Sans', sans-serif;
-    flex-direction: column;
-    padding: 30px;
-    width: 100%;
-    #score {
-        font-size: 32px;
-        font-weight: bold;
-        margin: 0;
-        margin-bottom: 16px;
-        color: #4a5d56;
-    }
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Space Mono', sans-serif;
+  padding: 30px;
+  width: 100%;
+
+  #score, #highScore {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 16px;
+    color: #4a5d56;
+    padding-right: 30px;
+    min-width: 220px;
+  }
 }
 
 #scene {
-    background: #6E857C;
-    display: flex;
-    border-radius: 20px;
-    border: 5px solid #4a5d56;
-    overflow: hidden;
-    position: relative;
-    min-height: 1024px;
-    min-width: 960px;
-    &::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 0;
-        border-bottom: 5px dashed #4a5d56;
-        z-index: 1;
-        top: 180px;
-    }
-    &::before {
-        content: "LIMIT";
-        font-size: 36px;
-        position: absolute;
-        right: 10px;
-        top: 130px;
-        color: #4a5d56;
-    }
-    canvas {
-    }
+  background: #6E857C;
+  display: flex;
+  border-radius: 20px;
+  border: 5px solid #4a5d56;
+  overflow: hidden;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 0;
+    border-bottom: 5px dashed #4a5d56;
+    z-index: 1;
+    top: 140px;
+  }
+
+  &::before {
+    content: "LIMIT";
+    font-size: 36px;
+    position: absolute;
+    right: 10px;
+    top: 80px;
+    color: #4a5d56;
+  }
+
+  canvas {}
 }
 
 #gameOverModal {
+  font-family: 'Space Mono', sans-serif;
   #screenshot {
     display: block;
     width: 100%;
+  }
+  #gameOverScore {
+    font-family: 'Space Mono', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a5d56;
+  }
+  .modal-header {
+    border-bottom: 5px solid #4a5d56;
+  }
+  .modal-footer {
+    border-top: 5px solid #4a5d56;
+  }
+  .modal-content {
+    background: #90a69d;
+    border-radius: 20px;
+    border: 5px solid #4a5d56;
+    color: #4a5d56;
   }
 }
