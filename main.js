@@ -114,8 +114,8 @@ const runner = Runner.create();
 Runner.run(runner, engine);
 
 const createBall = (level, isStatic = true, x = 0, y = null, canCollision = true) => {
-  const scale = 0.8;
-  const sizes = [30, 45, 60, 80, 100, 120, 140, 160, 180, 200];
+  const scale = 0.85;
+  const sizes = [30, 45, 60, 80, 100, 120, 140, 160, 180, 200, 220];
   const size = sizes[level] * scale;
   const ball = Bodies.circle(x, y ?? 140, size, {
     label: 'ball',
@@ -180,13 +180,17 @@ scene.addEventListener('mouseup', handleDropEvents, false);
 Events.on(engine, 'collisionStart', (event) => {
   const { pairs } = event;
   // 遍歷碰撞對
+  let validPairs = new Set();
   for (let i = 0; i < pairs.length; i += 1) {
     const pair = pairs[i];
-    // 檢查碰撞對中的物體是否為非靜態的
+    // 檢查碰撞對中的物體是否為非靜態的、沒有被合併過、且等級相同
     if (!pair.bodyA.isStatic
       && !pair.bodyB.isStatic
       && pair.bodyA.level < 10
-      && pair.bodyA.level === pair.bodyB.level) {
+      && pair.bodyA.level === pair.bodyB.level
+      && !validPairs.has(pair.bodyA.id)
+      && !validPairs.has(pair.bodyB.id)
+    ) {
       // 取得兩個物體的中心點
       const x = (pair.bodyA.position.x + pair.bodyB.position.x) / 2;
       const y = (pair.bodyA.position.y + pair.bodyB.position.y) / 2;
@@ -195,6 +199,7 @@ Events.on(engine, 'collisionStart', (event) => {
       const ball = createBall(pair.bodyA.level + 1, false, x, y);
       ball.updateTs = Date.now();
       score.value += 10 * (pair.bodyA.level + 1);
+      validPairs = new Set([...validPairs, pair.bodyA.id, pair.bodyB.id]);
     }
   }
 });
